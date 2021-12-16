@@ -10,10 +10,16 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    maze.cpp \
+    mazescene.cpp \
+    wallitem.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    maze.h \
+    mazescene.h \
+    wallitem.h
 
 FORMS += \
     mainwindow.ui
