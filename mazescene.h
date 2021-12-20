@@ -6,6 +6,7 @@
 #include <QWidget>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsItem>
+#include "wallitem.h"
 
 class MazeScene : public QGraphicsScene
 {
@@ -14,6 +15,7 @@ public:
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+
 };
 
 #endif // MAZESCENE_H

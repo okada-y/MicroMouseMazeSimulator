@@ -1,10 +1,10 @@
 ﻿#include "mazescene.h"
-#include "wallitem.h"
+
 
 MazeScene::MazeScene(QObject *parent)
     : QGraphicsScene{parent}
 {
-
+    //this->setBackgroundBrush(Qt::gray);
 }
 
 void MazeScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
@@ -17,7 +17,7 @@ void MazeScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
     }
     switch (pItem->type()) {
         case QGraphicsTextItem::Type :
-            qDebug("this is line");
+            qDebug("this is text");
             break;
 
         case QGraphicsRectItem::Type :
@@ -30,6 +30,12 @@ void MazeScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
 
         case WallItem::Type :
             qDebug("this is wall");
+//            WallItem *temp = qgraphicsitem_cast<WallItem*>(pItem);
+//            QPen *pen = new QPen;
+//            pen->setWidth(5);
+//            pen->setBrush(Qt::gray);
+//            temp->setPen(*pen);
             break;
     }
 }
+

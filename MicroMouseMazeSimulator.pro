@@ -12,14 +12,21 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     maze.cpp \
+    mazedraw.cpp \
     mazescene.cpp \
-    wallitem.cpp
+    pillar.cpp \
+    walldesign.cpp \
+    wallitem.cpp \
+    wallitemvec.cpp
 
 HEADERS += \
     mainwindow.h \
     maze.h \
     mazescene.h \
-    wallitem.h
+    pillar.h \
+    walldesign.h \
+    wallitem.h \
+    wallitemvec.h
 
 FORMS += \
     mainwindow.ui

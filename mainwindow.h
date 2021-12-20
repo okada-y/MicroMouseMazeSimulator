@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include "mazescene.h"
+#include "wallitemvec.h"
+#include "mazedraw.h"
+#include "walldesign.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -20,5 +23,7 @@ private:
     Ui::MainWindow *ui;
     void init();
     MazeScene *scene;
+    WallItemVec *wall;
+    WallDesign *wallDesign;
 };
 #endif // MAINWINDOW_H
