@@ -7,7 +7,7 @@ WallItem::WallItem()
 }
 
 
-bool WallItem::getwallExists(){
+bool WallItem::getExists(){
     /*
     get the status of the wall exists.
 
@@ -18,7 +18,7 @@ bool WallItem::getwallExists(){
     return existsState;
 }
 
-bool WallItem::setWallExists(bool exists){
+bool WallItem::setExists(bool exists){
     /*
     set the status of the wall exists.
 
@@ -33,7 +33,7 @@ bool WallItem::setWallExists(bool exists){
     return true;
 }
 
-bool WallItem::setWallLocked(bool locked){
+bool WallItem::setLocked(bool locked){
     /*
     set the status of the wall exists.
 
@@ -45,7 +45,7 @@ bool WallItem::setWallLocked(bool locked){
     return true;
 }
 
-void WallItem::setWallWidth(int width){
+void WallItem::setWidth(int width){
     /*
     Set the drawing width of the wall.
 
@@ -57,7 +57,7 @@ void WallItem::setWallWidth(int width){
     this->setPen(*pen);
 }
 
-void WallItem::upDateWallBrush(){
+void WallItem::upDateBrush(){
     /*
     Update brushes according to wall conditions.
 
@@ -65,10 +65,15 @@ void WallItem::upDateWallBrush(){
     ------
 
     */
+    QBrush brush;
+
     if(existsState){
-        pen->setBrush(Qt::red);
+        brush.setColor(QColor(255, 60, 60, 255));
+        brush.setStyle(Qt::SolidPattern);
     }else{
-        pen->setBrush(Qt::gray);
+        brush.setColor(Qt::gray);
+        brush.setStyle(Qt::Dense4Pattern);
     }
+    pen->setBrush(brush);
     this->setPen(*pen);
 }

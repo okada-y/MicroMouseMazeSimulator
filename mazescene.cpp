@@ -4,7 +4,7 @@
 MazeScene::MazeScene(QObject *parent)
     : QGraphicsScene{parent}
 {
-    //this->setBackgroundBrush(Qt::gray);
+    this->setBackgroundBrush(QColor(255, 255, 250, 255));
 }
 
 void MazeScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
@@ -30,11 +30,6 @@ void MazeScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
 
         case WallItem::Type :
             qDebug("this is wall");
-//            WallItem *temp = qgraphicsitem_cast<WallItem*>(pItem);
-//            QPen *pen = new QPen;
-//            pen->setWidth(5);
-//            pen->setBrush(Qt::gray);
-//            temp->setPen(*pen);
             break;
     }
 }

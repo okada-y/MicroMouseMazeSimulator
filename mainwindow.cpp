@@ -1,8 +1,5 @@
 ﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "wallitem.h"
-
-
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -18,10 +15,13 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::init(){
+    maze = new Maze;
     scene = new MazeScene;
-    wall = new WallItemVec;
+    wall = new WallItemVec(maze->getXSize(),maze->getYSize());
     wallDesign = new WallDesign;
-    wall->drawWallItemVec(scene,wallDesign);
+    pillar = new PillarItemVec(maze->getXSize(),maze->getYSize());
+    wall->drawItemVec(scene,wallDesign);
+    pillar->drawItemVec(scene,wallDesign);
 //    MazeDraw *mDraw = new MazeDraw(scene, wall);
 
 //    //シーンにアイテムを追加

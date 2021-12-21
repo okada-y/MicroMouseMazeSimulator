@@ -12,6 +12,7 @@
 #include <QObject>
 #include <QWidget>
 #include <QPen>
+#include <QBrush>
 
 class WallItem : public QGraphicsLineItem
 {
@@ -24,16 +25,16 @@ public:
     enum{ Type = UserType + 1};
     int type() const override { return Type; }
 
-    bool getwallExists();       //壁の有無を取得
-    bool setWallExists(bool);   //壁の有無を操作
-    bool setWallLocked(bool);   //アイテムの編集可否を操作
-    void setWallWidth(int width);
-    void upDateWallBrush();
+    bool getExists();       //壁の有無を取得
+    bool setExists(bool);   //壁の有無を操作
+    bool setLocked(bool);   //アイテムの編集可否を操作
+    void setWidth(int width);
+    void upDateBrush();
 
 private:
     bool existsState; //壁の有無の状態
     bool lockedState; //壁編集可否の状態
-    QPen *pen; //壁描画用ペン
+    QPen *pen;
 };
 
 #endif // WALLITEM_H

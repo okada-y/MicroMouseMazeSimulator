@@ -25,13 +25,11 @@ public:
     void setExists(int ax, int x, int y, bool exists);
     bool getExists(int ax, int x, int y);
     bool isInsideOfField(int ax, int x, int y);
-    void drawWallItemVec(MazeScene *scene, WallDesign *design);
-//    void drawPiller(MazeScene *scene);
-//    void drawCoordinate(MazeScene *scene);
+    void drawItemVec(MazeScene *scene, WallDesign *design);
 
 private:
-    std::vector<std::vector<WallItem*>> besideWallItemVec;     //横壁配列
-    std::vector<std::vector<WallItem*>> verticalWallItemVec;   //縦壁配列
+    std::vector<std::vector<WallItem*>> besideItemVec;     //横壁配列
+    std::vector<std::vector<WallItem*>> verticalItemVec;   //縦壁配列
 };
 
 #endif // WALLITEMVEC_H

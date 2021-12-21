@@ -14,7 +14,8 @@ SOURCES += \
     maze.cpp \
     mazedraw.cpp \
     mazescene.cpp \
-    pillar.cpp \
+    pillaritem.cpp \
+    pillaritemvec.cpp \
     walldesign.cpp \
     wallitem.cpp \
     wallitemvec.cpp
@@ -23,7 +24,8 @@ HEADERS += \
     mainwindow.h \
     maze.h \
     mazescene.h \
-    pillar.h \
+    pillaritem.h \
+    pillaritemvec.h \
     walldesign.h \
     wallitem.h \
     wallitemvec.h

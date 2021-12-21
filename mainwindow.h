@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include "mazescene.h"
 #include "wallitemvec.h"
-#include "mazedraw.h"
+#include "pillaritemvec.h"
 #include "walldesign.h"
 
 QT_BEGIN_NAMESPACE
@@ -25,5 +25,7 @@ private:
     MazeScene *scene;
     WallItemVec *wall;
     WallDesign *wallDesign;
+    PillarItemVec *pillar;
+    Maze *maze;
 };
 #endif // MAINWINDOW_H
