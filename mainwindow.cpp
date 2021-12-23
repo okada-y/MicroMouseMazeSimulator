@@ -16,15 +16,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::init(){
-    maze = new Maze<unsigned int>;
-    scene = new MazeScene;
-    wall = new WallItemVec(maze->getMazeSize());
-    wallDesign = new WallDesign;
-    pillar = new PillarItemVec(maze->getMazeSize());
-    wall->drawItemVec(scene,wallDesign);
-    pillar->drawItemVec(scene,wallDesign);
-
-    //シーンをビューにセット
-    ui->MazeView->setScene(scene);
+    scene = new MazeScene(25); //迷路サイズを設定して迷路描画用シーンを初期化
+    ui->MazeView->setScene(scene); //シーンをビューにセット
 }
 

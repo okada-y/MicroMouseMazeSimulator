@@ -8,15 +8,14 @@
 * @date 2021.12.22
 */
 #include <vector>
-#include <typeinfo>
 
-#define DEFAULT_MAZE_SIZE 32
+#define MAX_MAZE_SIZE 32
 
 template <class mazeSize_t>
 class Maze
 {
 public:
-    Maze();
+    Maze(int size = MAX_MAZE_SIZE);
     int getMazeSize(){return mazeSize;}
 private:
     int mazeSize;
@@ -26,18 +25,9 @@ private:
 
 
 template <class mazeSize_t>
-Maze<mazeSize_t>::Maze()
+Maze<mazeSize_t>::Maze(int size)
 {
-    //データ型から迷路のサイズを決定する
-    if(typeid(mazeSize_t) == typeid(uint32_t)){
-        mazeSize = 32;
-    }else if(typeid(mazeSize_t) == typeid(uint16_t)){
-        mazeSize = 16;
-    }else if(typeid(mazeSize_t) == typeid(uint8_t)){
-        mazeSize = 8;
-    }else{
-        mazeSize = DEFAULT_MAZE_SIZE;
-    }
+    mazeSize = size;
 
     //壁格納配列の初期化
     wall.resize(2,std::vector<mazeSize_t>(mazeSize-1,0));

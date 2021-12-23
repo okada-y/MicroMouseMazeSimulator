@@ -23,9 +23,6 @@ private:
     Ui::MainWindow *ui;
     void init();
     MazeScene *scene;
-    WallItemVec *wall;
-    WallDesign *wallDesign;
-    PillarItemVec *pillar;
-    Maze<unsigned int> *maze;
+
 };
 #endif // MAINWINDOW_H

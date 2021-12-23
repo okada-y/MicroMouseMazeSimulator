@@ -56,26 +56,3 @@ bool PillarItemVec::getExists(int x, int y){
     }
     return itemVec.at(y).at(x)->getExists();
 }
-
-
-void PillarItemVec::drawItemVec(MazeScene *scene, WallDesign *design){
-    /*
-    draw a pillar vector in the scene
-
-    return
-    ------
-
-    */
-    //横壁の描画
-    size_t ySize = itemVec.size();
-    size_t xSize = itemVec.at(0).size();
-    for(int y=0; y<ySize; y++){
-        for(int x=0; x<xSize; x++){
-            itemVec.at(y).at(x)->setSize(design->wallWidth);
-            itemVec.at(y).at(x)->setPos((design->wallLength)* x -(design->wallWidth/2),
-                                        (design->wallLength)* y -(design->wallWidth/2));
-            itemVec.at(y).at(x)->upDateBrush();
-            scene->addItem(itemVec.at(y).at(x));
-        }
-    }
-}

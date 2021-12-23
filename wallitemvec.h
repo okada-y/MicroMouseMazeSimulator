@@ -11,7 +11,6 @@
 #define WALLITEMVEC_H
 
 #include "wallitem.h"
-#include "mazescene.h"
 #include "walldesign.h"
 #include "maze.h"
 #include <vector>
@@ -19,15 +18,13 @@
 class WallItemVec
 {
 public:
-    WallItemVec(int size = DEFAULT_MAZE_SIZE);
+    WallItemVec(int size = MAX_MAZE_SIZE);
     enum{BESIDE,VERTICAL,MAX_WALLITE_DIM};
 
     void setExists(int ax, int x, int y, bool exists);
     bool getExists(int ax, int x, int y);
     bool isInsideOfField(int ax, int x, int y);
-    void drawItemVec(MazeScene *scene, WallDesign *design);
 
-private:
     std::vector<std::vector<WallItem*>> besideItemVec;     //横壁配列
     std::vector<std::vector<WallItem*>> verticalItemVec;   //縦壁配列
 };
