@@ -19,7 +19,7 @@
 class WallItemVec
 {
 public:
-    WallItemVec(int xSize = 32, int ySize = 32);
+    WallItemVec(int size = DEFAULT_MAZE_SIZE);
     enum{BESIDE,VERTICAL,MAX_WALLITE_DIM};
 
     void setExists(int ax, int x, int y, bool exists);

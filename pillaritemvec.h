@@ -4,11 +4,12 @@
 #include "mazescene.h"
 #include "walldesign.h"
 #include "pillaritem.h"
+#include "maze.h"
 
 class PillarItemVec
 {
 public:
-    PillarItemVec(int xSize = 32, int ySize = 32);
+    PillarItemVec(int size = DEFAULT_MAZE_SIZE);
 
     void setExists(int x, int y, bool exists);
     bool getExists(int x, int y);

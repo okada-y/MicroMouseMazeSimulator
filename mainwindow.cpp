@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     init();
 }
 
@@ -15,25 +16,14 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::init(){
-    maze = new Maze;
+    maze = new Maze<unsigned int>;
     scene = new MazeScene;
-    wall = new WallItemVec(maze->getXSize(),maze->getYSize());
+    wall = new WallItemVec(maze->getMazeSize());
     wallDesign = new WallDesign;
-    pillar = new PillarItemVec(maze->getXSize(),maze->getYSize());
+    pillar = new PillarItemVec(maze->getMazeSize());
     wall->drawItemVec(scene,wallDesign);
     pillar->drawItemVec(scene,wallDesign);
-//    MazeDraw *mDraw = new MazeDraw(scene, wall);
 
-//    //シーンにアイテムを追加
-//    QPen *pen = new QPen;
-//    pen->setWidth(5);
-//    pen->setBrush(Qt::red);
-//    for(int i=0; i<3; i++){
-//        WallItem *wall = new WallItem;
-//        wall->setLine(QLineF(100*(i+1), 100, 100*(i+1), 200));
-//        wall->setPen(*pen);
-//        scene->addItem(wall);
-//    }
     //シーンをビューにセット
     ui->MazeView->setScene(scene);
 }

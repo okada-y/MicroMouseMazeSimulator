@@ -7,6 +7,7 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsItem>
 #include "wallitem.h"
+#include "pillaritem.h"
 
 class MazeScene : public QGraphicsScene
 {

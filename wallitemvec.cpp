@@ -1,19 +1,19 @@
 ﻿#include "wallitemvec.h"
 
-WallItemVec::WallItemVec(int xSize, int ySize):
-    besideItemVec(ySize+1,std::vector<WallItem*>(xSize, nullptr)),
-    verticalItemVec(ySize,std::vector<WallItem*>(xSize+1, nullptr))
+WallItemVec::WallItemVec(int size):
+    besideItemVec(size+1,std::vector<WallItem*>(size, nullptr)),
+    verticalItemVec(size,std::vector<WallItem*>(size+1, nullptr))
 {
     //横壁ポインタの初期化
-    for(int y = 0; y <= ySize; y++){
-        for(int x = 0; x < xSize; x++){
+    for(int y = 0; y <= size; y++){
+        for(int x = 0; x < size; x++){
             besideItemVec.at(y).at(x) = new WallItem;
         }
     }
 
     //縦壁ポインタの初期化
-    for(int y = 0; y < ySize; y++){
-        for(int x = 0; x <= xSize; x++){
+    for(int y = 0; y < size; y++){
+        for(int x = 0; x <= size; x++){
             verticalItemVec.at(y).at(x) = new WallItem;
         }
     }

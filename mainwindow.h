@@ -26,6 +26,6 @@ private:
     WallItemVec *wall;
     WallDesign *wallDesign;
     PillarItemVec *pillar;
-    Maze *maze;
+    Maze<unsigned int> *maze;
 };
 #endif // MAINWINDOW_H

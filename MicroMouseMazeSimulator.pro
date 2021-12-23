@@ -12,7 +12,6 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     maze.cpp \
-    mazedraw.cpp \
     mazescene.cpp \
     pillaritem.cpp \
     pillaritemvec.cpp \

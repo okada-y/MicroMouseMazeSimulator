@@ -16,6 +16,7 @@ public:
     void setLocked(bool);   //アイテムの編集可否を操作
     void setSize(int size);
     void upDateBrush();
+    void toggleExists();
 
 private:
     bool existsState;

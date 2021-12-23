@@ -30,6 +30,7 @@ public:
     bool setLocked(bool);   //アイテムの編集可否を操作
     void setWidth(int width);
     void upDateBrush();
+    void toggleExists();
 
 private:
     bool existsState; //壁の有無の状態

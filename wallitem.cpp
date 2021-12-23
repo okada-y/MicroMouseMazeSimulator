@@ -77,3 +77,16 @@ void WallItem::upDateBrush(){
     pen->setBrush(brush);
     this->setPen(*pen);
 }
+
+void WallItem::toggleExists(){
+    /*
+    toggle wall exists
+
+    return
+    ------
+
+    */
+    if(!lockedState){
+       existsState = !existsState;
+    }
+}

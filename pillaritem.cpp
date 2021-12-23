@@ -1,7 +1,7 @@
 ﻿#include "pillaritem.h"
 
 PillarItem::PillarItem()
-    :existsState(false),lockedState(false)
+    :existsState(true),lockedState(false)
 {
 }
 
@@ -73,4 +73,17 @@ void PillarItem::upDateBrush(){
         pen->setStyle(Qt::DotLine);
     }
     this->setPen(*pen);
+}
+
+void PillarItem::toggleExists(){
+    /*
+    toggle pillar exists
+
+    return
+    ------
+
+    */
+    if(!lockedState){
+       existsState = !existsState;
+    }
 }

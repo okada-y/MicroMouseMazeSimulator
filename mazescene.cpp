@@ -9,27 +9,23 @@ MazeScene::MazeScene(QObject *parent)
 
 void MazeScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
     QPointF pos = event->scenePos();
-    qDebug("scenePos x = %f, y = %f", pos.x(), pos.y());
+    //qDebug("scenePos x = %f, y = %f", pos.x(), pos.y());
     QGraphicsItem *pItem = itemAt(pos, QTransform());
     if(pItem == NULL){
-        qDebug("no object here");
+        //qDebug("no object here");
         return;
     }
     switch (pItem->type()) {
-        case QGraphicsTextItem::Type :
-            qDebug("this is text");
-            break;
-
-        case QGraphicsRectItem::Type :
-            qDebug("this is rect");
-            break;
-
-        case QGraphicsLineItem::Type :
-            qDebug("this is line");
-            break;
-
+        //壁オブジェクトクリック時の処理
         case WallItem::Type :
-            qDebug("this is wall");
+            //qDebug("this is wall");
+            qgraphicsitem_cast<WallItem*>(pItem)->toggleExists();
+            qgraphicsitem_cast<WallItem*>(pItem)->upDateBrush();
+            break;
+        //柱オブジェクトクリック時の処理
+        case PillarItem::Type :
+            qgraphicsitem_cast<PillarItem*>(pItem)->toggleExists();
+            qgraphicsitem_cast<PillarItem*>(pItem)->upDateBrush();
             break;
     }
 }

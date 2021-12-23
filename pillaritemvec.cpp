@@ -1,11 +1,11 @@
 ﻿#include "pillaritemvec.h"
 
-PillarItemVec::PillarItemVec(int xSize, int ySize):
-    itemVec(ySize+1,std::vector<PillarItem*>(xSize+1, nullptr))
+PillarItemVec::PillarItemVec(int size):
+    itemVec(size+1,std::vector<PillarItem*>(size+1, nullptr))
 {
     //柱ポインタの初期化
-    for(int y = 0; y <= ySize; y++){
-        for(int x = 0; x <= xSize; x++){
+    for(int y = 0; y <= size; y++){
+        for(int x = 0; x <= size; x++){
             itemVec.at(y).at(x) = new PillarItem();
         }
     }
