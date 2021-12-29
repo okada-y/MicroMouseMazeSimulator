@@ -11,7 +11,6 @@
 #define WALLITEMVEC_H
 
 #include "wallitem.h"
-#include "walldesign.h"
 #include "maze.h"
 #include <vector>
 
@@ -24,9 +23,42 @@ public:
     void setExists(int ax, int x, int y, bool exists);
     bool getExists(int ax, int x, int y);
     bool isInsideOfField(int ax, int x, int y);
+    template <class mazeSize_t>
+    vector<vector<mazeSize_t>>getExistsVec();
+    void setExistsVec(vector<vector<uint32_t>>);
 
     std::vector<std::vector<WallItem*>> besideItemVec;     //横壁配列
     std::vector<std::vector<WallItem*>> verticalItemVec;   //縦壁配列
+private:
+    int mazeSize;
 };
+
+template <class mazeSize_t>
+vector<vector<mazeSize_t>> WallItemVec::getExistsVec(){
+    /*
+    Return formed wall data.
+
+    Return
+    ------
+    vector<vector<mazeSize_t>> Formed wall data
+    */
+
+    vector<vector<mazeSize_t>> data(2, vector<mazeSize_t>(mazeSize-1));
+
+    /*横壁情報の整形*/
+    for(int y=1; y<mazeSize; y++){ //　一番下と上の壁は既知であるためデータとしない
+        for(int x=0; x<mazeSize; x++){
+            data.at(BESIDE).at(y-1) |= (getExists(BESIDE,x,y) << x);
+        }
+    }
+
+    /*縦壁情報の整形*/
+    for(int x=1; x<mazeSize; x++){ //　一番左と右の壁は既知であるためデータとしない
+        for(int y=0; y<mazeSize; y++){
+            data.at(VERTICAL).at(x-1) |= (getExists(VERTICAL,x,y) << y);
+        }
+    }
+    return data;
+}
 
 #endif // WALLITEMVEC_H

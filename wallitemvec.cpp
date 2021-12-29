@@ -4,6 +4,9 @@ WallItemVec::WallItemVec(int size):
     besideItemVec(size+1,std::vector<WallItem*>(size, nullptr)),
     verticalItemVec(size,std::vector<WallItem*>(size+1, nullptr))
 {
+
+    mazeSize = size;
+
     //横壁ポインタの初期化
     for(int y = 0; y <= size; y++){
         for(int x = 0; x < size; x++){
@@ -77,20 +80,15 @@ bool WallItemVec::isInsideOfField(int ax, int x, int y){
     ------
     bool result
     */
-    size_t xSize; //X方向壁の枚数
-    size_t ySize; //Y方向壁の枚数
-
     switch(ax){
     case BESIDE:
-        ySize = besideItemVec.size();
-        xSize = besideItemVec.at(0).size();
-        return (0 <= y) && (y <= ySize) && (0 <= x) && (x <= xSize);
+        return (0 <= y) && (y < mazeSize+1) && (0 <= x) && (x < mazeSize);
     case VERTICAL:
-        ySize = verticalItemVec.size();
-        xSize = verticalItemVec.at(0).size();
-        return (0 <= y) && (y <= ySize) && (0 <= x) && (x <= xSize);
+        return (0 <= y) && (y < mazeSize) && (0 <= x) && (x < mazeSize+1);
     default:
         qDebug("Axis does not exit");
         return false;
     }
 }
+
+

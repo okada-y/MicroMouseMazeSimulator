@@ -166,7 +166,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="setMazeDataButton">
          <property name="text">
           <string>&lt;-</string>
          </property>
@@ -186,7 +186,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="getMazeDataButton">
          <property name="text">
           <string>-&gt;</string>
          </property>

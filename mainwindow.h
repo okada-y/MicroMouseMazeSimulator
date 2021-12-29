@@ -5,7 +5,6 @@
 #include "mazescene.h"
 #include "wallitemvec.h"
 #include "pillaritemvec.h"
-#include "walldesign.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,6 +17,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+private slots:
+    void on_getMazeDataButton_clicked();
 
 private:
     Ui::MainWindow *ui;

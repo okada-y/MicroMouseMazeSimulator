@@ -1,7 +1,6 @@
 ﻿#ifndef PILLARITEMVEC_H
 #define PILLARITEMVEC_H
 
-#include "walldesign.h"
 #include "pillaritem.h"
 #include "maze.h"
 

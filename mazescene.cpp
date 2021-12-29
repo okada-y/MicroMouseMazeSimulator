@@ -1,16 +1,18 @@
 ﻿#include "mazescene.h"
 
-MazeScene::MazeScene(int mazeSize, QObject *parent)
+MazeScene::MazeScene(int size, QObject *parent)
     : QGraphicsScene{parent},
       wallWidth(3),wallLength(27)
 {
     this->setBackgroundBrush(QColor(255, 255, 250, 255));
 
     //迷路サイズに応じた迷路,柱,壁クラスのインスタンス化
-    if((mazeSize < 0) && (mazeSize > MAX_MAZE_SIZE)){
+    if((size < 0) && (MAX_MAZE_SIZE < size)){
         qDebug("Out of range of maze size.");
         return;
     }
+
+    mazeSize = size;
     if(16 < mazeSize){
         maze_32 = new Maze<uint32_t>(mazeSize);
         wall = new WallItemVec(maze_32->getMazeSize());
@@ -29,6 +31,31 @@ MazeScene::MazeScene(int mazeSize, QObject *parent)
     drawWallItemVec(wall, wallWidth, wallLength);
     drawPillarlItemVec(pillar, wallWidth, wallLength);
 }
+
+void MazeScene::setMazefromWall(){
+    /*
+     * Set the drawing wall data to the maze data.
+     *
+     * return
+     * ------
+     *
+     */
+    if(16 < mazeSize){
+        vector<vector<uint32_t>> tmp(2, vector<uint32_t>(mazeSize - 1));
+        tmp = wall->getExistsVec<uint32_t>();
+        maze_32->setWallData(tmp);
+    }else if(8 < mazeSize){
+        vector<vector<uint16_t>> tmp(2, vector<uint16_t>(mazeSize - 1));
+        tmp = wall->getExistsVec<uint16_t>();
+        maze_16->setWallData(tmp);
+    }else{
+        vector<vector<uint8_t>> tmp(2, vector<uint8_t>(mazeSize - 1));
+        tmp = wall->getExistsVec<uint8_t>();
+        maze_8->setWallData(tmp);
+    }
+
+}
+
 
 void MazeScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
     QPointF pos = event->scenePos();
@@ -111,5 +138,6 @@ void MazeScene::drawPillarlItemVec(PillarItemVec *pillar, int width, int length)
         }
     }
 };
+
 
 

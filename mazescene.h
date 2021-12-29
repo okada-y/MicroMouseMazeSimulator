@@ -14,7 +14,6 @@
 #include <QGraphicsItem>
 #include "wallitem.h"
 #include "wallitemvec.h"
-#include "walldesign.h"
 #include "pillaritem.h"
 #include "pillaritemvec.h"
 #include "maze.h"
@@ -24,6 +23,7 @@ class MazeScene : public QGraphicsScene
 
 public:
     explicit MazeScene(int mazeSize = MAX_MAZE_SIZE, QObject *parent = nullptr);
+    void setMazefromWall();
 
 private:
     WallItemVec *wall;
@@ -34,6 +34,7 @@ private:
 
     int wallWidth;
     int wallLength;
+    int mazeSize;
 
     void drawWallItemVec(WallItemVec *wall, int width, int length);
     void drawPillarlItemVec(PillarItemVec *pillar, int width, int length);
