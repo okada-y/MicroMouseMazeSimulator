@@ -2,9 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "mazescene.h"
-#include "wallitemvec.h"
-#include "pillaritemvec.h"
+#include "mazeDraw/mazescene.h"
+#include "mazeDraw/wallitemvec.h"
+#include "mazeDraw/pillaritemvec.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

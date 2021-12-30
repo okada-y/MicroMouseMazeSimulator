@@ -12,20 +12,20 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     maze.cpp \
-    mazescene.cpp \
-    pillaritem.cpp \
-    pillaritemvec.cpp \
-    wallitem.cpp \
-    wallitemvec.cpp
+    mazeDraw\mazescene.cpp \
+    mazeDraw\pillaritem.cpp \
+    mazeDraw\pillaritemvec.cpp \
+    mazeDraw\wallitem.cpp \
+    mazeDraw\wallitemvec.cpp
 
 HEADERS += \
     mainwindow.h \
     maze.h \
-    mazescene.h \
-    pillaritem.h \
-    pillaritemvec.h \
-    wallitem.h \
-    wallitemvec.h
+    mazeDraw\mazescene.h \
+    mazeDraw\pillaritem.h \
+    mazeDraw\pillaritemvec.h \
+    mazeDraw\wallitem.h \
+    mazeDraw\wallitemvec.h
 
 FORMS += \
     mainwindow.ui

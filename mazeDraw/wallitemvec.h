@@ -11,7 +11,7 @@
 #define WALLITEMVEC_H
 
 #include "wallitem.h"
-#include "maze.h"
+#include "../maze.h"
 #include <vector>
 
 class WallItemVec

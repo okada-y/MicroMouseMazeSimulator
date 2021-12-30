@@ -2,7 +2,7 @@
 #define PILLARITEMVEC_H
 
 #include "pillaritem.h"
-#include "maze.h"
+#include "../maze.h"
 
 class PillarItemVec
 {
