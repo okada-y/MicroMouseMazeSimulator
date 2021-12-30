@@ -32,7 +32,7 @@ void MazeText::vec2Text(const vector<vector<mazeSize_t>>&wallData){
 
     for(int i=0; i<NUM_OF_DIM; i++){
         for(int j=0; j<size; j++){
-            mazeText.append(QString::number(wallData.at(i).at(j),32));
+            mazeText.append(QString::number(wallData.at(i).at(j),16));
             mazeText.append(" ");
         }
         mazeText.append("\n");
