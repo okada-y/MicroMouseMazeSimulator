@@ -23,7 +23,8 @@ class MazeScene : public QGraphicsScene
 
 public:
     explicit MazeScene(int mazeSize = MAX_MAZE_SIZE, QObject *parent = nullptr);
-    void setMazefromWall();
+    void setMazeFromWall();
+    void setWallFromMaze();
     const int getMazeSize(){return mazeSize;}
     void* getMazeClassP();
 
@@ -40,6 +41,7 @@ private:
 
     void drawWallItemVec(WallItemVec *wall, int width, int length);
     void drawPillarlItemVec(PillarItemVec *pillar, int width, int length);
+
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;

@@ -33,7 +33,7 @@ MazeScene::MazeScene(int size, QObject *parent)
     drawPillarlItemVec(pillar, wallWidth, wallLength);
 }
 
-void MazeScene::setMazefromWall(){
+void MazeScene::setMazeFromWall(){
     /*
      * Set the drawing wall data to the maze data.
      *
@@ -54,8 +54,23 @@ void MazeScene::setMazefromWall(){
         tmp = wall->getExistsVec<uint8_t>();
         maze_8->setWallData(tmp);
     }
-
 }
+
+void MazeScene::setWallFromMaze(){
+    /*
+     * Set the maze data to the drawing wall data.
+     *
+     * return
+     * ------
+     *
+     */
+    if(16 < mazeSize){
+
+    }else if(8 < mazeSize){
+    }else{
+    }
+}
+
 
 void* MazeScene::getMazeClassP(){
     /*
