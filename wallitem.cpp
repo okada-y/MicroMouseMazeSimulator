@@ -26,7 +26,7 @@ bool WallItem::setExists(bool exists){
     ------
     bool editSuccess
     */
-    if(!lockedState){
+    if(lockedState){
         return false;
     }
     existsState = exists;

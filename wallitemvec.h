@@ -30,6 +30,7 @@ public:
     std::vector<std::vector<WallItem*>> besideItemVec;     //横壁配列
     std::vector<std::vector<WallItem*>> verticalItemVec;   //縦壁配列
 private:
+    void wallItemInit(int size);
     int mazeSize;
 };
 

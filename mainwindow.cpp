@@ -17,7 +17,7 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::init(){
-    scene = new MazeScene(25); //迷路サイズを設定して迷路描画用シーンを初期化
+    scene = new MazeScene(16); //迷路サイズを設定して迷路描画用シーンを初期化
     ui->MazeView->setScene(scene); //シーンをビューにセット
 }
 

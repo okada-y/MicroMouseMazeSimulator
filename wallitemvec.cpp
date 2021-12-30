@@ -4,22 +4,7 @@ WallItemVec::WallItemVec(int size):
     besideItemVec(size+1,std::vector<WallItem*>(size, nullptr)),
     verticalItemVec(size,std::vector<WallItem*>(size+1, nullptr))
 {
-
-    mazeSize = size;
-
-    //横壁ポインタの初期化
-    for(int y = 0; y <= size; y++){
-        for(int x = 0; x < size; x++){
-            besideItemVec.at(y).at(x) = new WallItem;
-        }
-    }
-
-    //縦壁ポインタの初期化
-    for(int y = 0; y < size; y++){
-        for(int x = 0; x <= size; x++){
-            verticalItemVec.at(y).at(x) = new WallItem;
-        }
-    }
+    wallItemInit(size);
 }
 
 void WallItemVec::setExists(int ax, int x, int y, bool exists){
@@ -88,6 +73,35 @@ bool WallItemVec::isInsideOfField(int ax, int x, int y){
     default:
         qDebug("Axis does not exit");
         return false;
+    }
+}
+
+void WallItemVec::wallItemInit(int size){
+
+    mazeSize = size;
+
+    //横壁ポインタの初期化
+    for(int y = 0; y <= size; y++){
+        for(int x = 0; x < size; x++){
+            besideItemVec.at(y).at(x) = new WallItem;
+            if(y == 0 || y == size){/*上辺と下辺は壁があるものとし、編集不可とする*/
+                besideItemVec.at(y).at(x)->setExists(true);
+                besideItemVec.at(y).at(x)->setLocked(true);
+                besideItemVec.at(y).at(x)->upDateBrush();
+            }
+        }
+    }
+
+    //縦壁ポインタの初期化
+    for(int y = 0; y < size; y++){
+        for(int x = 0; x <= size; x++){
+            verticalItemVec.at(y).at(x) = new WallItem;
+            if(x == 0 || x == size){/*左辺と右辺は壁があるものとし、編集不可とする*/
+                verticalItemVec.at(y).at(x)->setExists(true);
+                verticalItemVec.at(y).at(x)->setLocked(true);
+                verticalItemVec.at(y).at(x)->upDateBrush();
+            }
+        }
     }
 }
 
