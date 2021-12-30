@@ -18,8 +18,6 @@ class WallItemVec
 {
 public:
     WallItemVec(int size = MAX_MAZE_SIZE);
-    enum{BESIDE,VERTICAL,MAX_WALLITE_DIM};
-
     void setExists(int ax, int x, int y, bool exists);
     bool getExists(int ax, int x, int y);
     bool isInsideOfField(int ax, int x, int y);

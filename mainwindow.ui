@@ -27,8 +27,8 @@
    <widget class="QPushButton" name="pushButton_6">
     <property name="geometry">
      <rect>
-      <x>1060</x>
-      <y>910</y>
+      <x>740</x>
+      <y>110</y>
       <width>61</width>
       <height>24</height>
      </rect>
@@ -40,8 +40,8 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>980</x>
-      <y>390</y>
+      <x>990</x>
+      <y>800</y>
       <width>342</width>
       <height>155</height>
      </rect>
@@ -140,8 +140,8 @@
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>980</x>
-      <y>20</y>
+      <x>990</x>
+      <y>280</y>
       <width>341</width>
       <height>351</height>
      </rect>
@@ -197,29 +197,10 @@
      <item row="2" column="1">
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_10">
-         <item>
-          <widget class="QLabel" name="label_3">
-           <property name="text">
-            <string>DataOutput</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <layout class="QHBoxLayout" name="horizontalLayout_10"/>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_7">
-         <item>
-          <widget class="QPushButton" name="pushButton_4">
-           <property name="text">
-            <string>SelectFile</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_2"/>
-         </item>
-        </layout>
+        <layout class="QHBoxLayout" name="horizontalLayout_7"/>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_11">
@@ -237,7 +218,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_5">
+          <widget class="QPushButton" name="SaveButton">
            <property name="text">
             <string>Save</string>
            </property>
@@ -263,7 +244,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="selectFileButton">
            <property name="text">
             <string>SelectFile</string>
            </property>
@@ -290,7 +271,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QTextBrowser" name="textBrowser"/>
+        <widget class="QTextBrowser" name="mazeTextBrowser"/>
        </item>
       </layout>
      </item>
@@ -322,10 +303,72 @@
      </item>
     </layout>
    </widget>
+   <widget class="QComboBox" name="mazeSize_comboBox">
+    <property name="geometry">
+     <rect>
+      <x>980</x>
+      <y>40</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>32</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>16</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>9</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>8</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>970</x>
+      <y>10</y>
+      <width>91</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="sizeIncrement">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>MazeSize</string>
+    </property>
+   </widget>
    <zorder>groupBox_2</zorder>
    <zorder>groupBox</zorder>
    <zorder>pushButton_6</zorder>
    <zorder>MazeView</zorder>
+   <zorder>mazeSize_comboBox</zorder>
+   <zorder>label_5</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

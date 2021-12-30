@@ -11,6 +11,7 @@
 #include <iterator>
 
 #define MAX_MAZE_SIZE 32
+enum{BESIDE,VERTICAL,NUM_OF_DIM};
 
 using std::vector;
 
@@ -21,8 +22,8 @@ class Maze
 public:
     Maze(int size = MAX_MAZE_SIZE);
     int getMazeSize(){return mazeSize;}
-    vector<mazeSize_t> getWallData();
-    vector<mazeSize_t> getWallKnownData();
+    const vector<vector<mazeSize_t>>* getWallData(){return &wall;}
+    const vector<vector<mazeSize_t>>* getWallKnownData(){return &wallknown;}
     void setWallData(vector<vector<mazeSize_t>> &wallData);
     void setWallKnownData(vector<vector<mazeSize_t>> &wallKnownData);
 

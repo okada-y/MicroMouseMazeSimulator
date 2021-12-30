@@ -1,4 +1,5 @@
 ﻿#include "mazescene.h"
+#include <typeinfo>
 
 MazeScene::MazeScene(int size, QObject *parent)
     : QGraphicsScene{parent},
@@ -56,6 +57,22 @@ void MazeScene::setMazefromWall(){
 
 }
 
+void* MazeScene::getMazeClassP(){
+    /*
+     * Return the maze class according to the maze size.
+     *
+     * return
+     * ------
+     * mazeClass *
+     */
+    if(16 < mazeSize){
+        return maze_32;
+    }else if(8 < mazeSize){
+        return maze_16;
+    }else{
+        return maze_8;
+    }
+}
 
 void MazeScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
     QPointF pos = event->scenePos();

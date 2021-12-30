@@ -16,7 +16,8 @@ SOURCES += \
     mazeDraw\pillaritem.cpp \
     mazeDraw\pillaritemvec.cpp \
     mazeDraw\wallitem.cpp \
-    mazeDraw\wallitemvec.cpp
+    mazeDraw\wallitemvec.cpp \
+    mazeText\mazetext.cpp
 
 HEADERS += \
     mainwindow.h \
@@ -25,7 +26,8 @@ HEADERS += \
     mazeDraw\pillaritem.h \
     mazeDraw\pillaritemvec.h \
     mazeDraw\wallitem.h \
-    mazeDraw\wallitemvec.h
+    mazeDraw\wallitemvec.h \
+    mazeText\mazetext.h
 
 FORMS += \
     mainwindow.ui
