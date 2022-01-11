@@ -26,6 +26,7 @@ void MainWindow::init(){
     mazeSize = ui->mazeSize_comboBox->currentText().toInt();//コンボボックスの値をもとに迷路サイズを設定
     scene = new MazeScene(mazeSize);    //迷路描画用シーンインスタンス生成
     ui->MazeView->setScene(scene);  //シーンをビューにセット
+    ui->MazeView->rotate(-90);
 
     //mazeインスタンスの生成
     if(mazeSize > 16){

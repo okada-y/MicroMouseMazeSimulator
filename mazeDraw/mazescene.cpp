@@ -140,16 +140,20 @@ void MazeScene::drawCoordinates(int width, int length){
 
     for(int i=0; i<mazeSize; i++){
         QGraphicsTextItem *text_row_on = this->addText(QString::number(i),font);
-        text_row_on->setPos((i+0.3)*length, -0.5*length);
+        text_row_on->setPos((i+0.7)*length, -0.5*length);
+        text_row_on->setRotation(90);
 
         QGraphicsTextItem *text_row_under = this->addText(QString::number(i),font);
-        text_row_under->setPos((i+0.3)*length, (mazeSize+0.2)*length);
+        text_row_under->setPos((i+0.7)*length, (mazeSize+0.2)*length);
+        text_row_under->setRotation(90);
 
         QGraphicsTextItem *text_col_left = this->addText(QString::number(i),font);
-        text_col_left->setPos(-0.5*length, (i+0.3)*length);
+        text_col_left->setPos(-0.2*length, (i+0.3)*length);
+        text_col_left->setRotation(90);
 
         QGraphicsTextItem *text_row_right = this->addText(QString::number(i),font);
-        text_row_right->setPos( (mazeSize+0.2)*length, (i+0.3)*length);
+        text_row_right->setPos( (mazeSize+0.5)*length, (i+0.3)*length);
+        text_row_right->setRotation(90);
     }
 }
 
