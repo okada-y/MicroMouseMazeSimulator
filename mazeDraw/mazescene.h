@@ -39,6 +39,7 @@ private:
 
     void drawWallItemVec(WallItemVec *wall, int width, int length);
     void drawPillarlItemVec(PillarItemVec *pillar, int width, int length);
+    void drawCoordinates(int width, int length);
 
 
 protected:
