@@ -42,12 +42,13 @@ void MazeText::vec2Text(const vector<vector<mazeSize_t>>&wallData){
 template<class mazeSize_t>
 vector<vector<mazeSize_t>> MazeText::text2Vec(){
 
-    QStringList list = mazeText.split(' ');
-    size_t size = (list.size()-1)/2;
+    QStringList list = mazeText.split(QRegExp("\\s+"));
+    size_t size = list.size()/2;
     vector<vector<mazeSize_t>> vec(2,vector<mazeSize_t>(size));
     for(int i=0; i<NUM_OF_DIM; i++){
         for(int j=0; j<size; j++){
-            vec.at(i).at(j) = list.at( j + i * (size + 1)).toULong();
+            bool ok;
+            vec.at(i).at(j) = list.at( j + i * (int)size ).toULong(&ok,16);
         }
     }
     return vec;

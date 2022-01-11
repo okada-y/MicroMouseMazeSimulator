@@ -21,13 +21,21 @@ MainWindow::~MainWindow()
 
 void MainWindow::init(){
 
-    ui->inputFileName->setReadOnly(true);
-    text = new MazeText();
-    //迷路サイズコンボボックスの値をもとに迷路サイズを設定して迷路描画用シーンを初期化
-    scene = new MazeScene(ui->mazeSize_comboBox->currentText().toInt());
+    ui->inputFileName->setReadOnly(true);   //インプットファイル表示部をリードオンリーに設定
+    text = new MazeText();  //迷路テキストデータインスタンス生成
+    mazeSize = ui->mazeSize_comboBox->currentText().toInt();//コンボボックスの値をもとに迷路サイズを設定
+    scene = new MazeScene(mazeSize);    //迷路描画用シーンインスタンス生成
+    ui->MazeView->setScene(scene);  //シーンをビューにセット
 
-    //シーンをビューにセット
-    ui->MazeView->setScene(scene);
+    //mazeインスタンスの生成
+    if(mazeSize > 16){
+        maze_32 = new Maze<uint32_t>;
+    }else if(mazeSize > 8){
+        maze_16 = new Maze<uint16_t>;
+    }else{
+        maze_8 = new Maze<uint8_t>;
+    }
+
 }
 
 
@@ -40,20 +48,24 @@ void MainWindow::on_getMazeDataButton_clicked()
     ------
 
     */
-    scene->setMazeFromWall();   //描画されている壁を壁データとして保存
-    text->clearText();          //壁情報を記すテキストをクリア
 
+    text->clearText();//壁情報を記すテキストをクリア
+
+    /*描画されている壁を壁データとして保存 */
     /*壁データをテキストに変換 */
-    if(16 < scene->getMazeSize()){
-        Maze<uint32_t> *temp = static_cast<Maze<uint32_t>*>(scene->getMazeClassP());
-        text->vec2Text<uint32_t>(*(temp->getWallData()));
-    }else if(8 < scene->getMazeSize()){
-        Maze<uint16_t> *temp = static_cast<Maze<uint16_t>*>(scene->getMazeClassP());
-        text->vec2Text<uint16_t>(*(temp->getWallData()));
+    if((mazeSize > 16) && (maze_32 != nullptr)){
+        scene->setMazeFromWall<uint32_t>(maze_32);
+        text->vec2Text<uint32_t>(*(maze_32->getWallData()));
+    }else if((mazeSize > 8) && (maze_16 != nullptr)){
+        scene->setMazeFromWall<uint16_t>(maze_16);
+        text->vec2Text<uint16_t>(*(maze_16->getWallData()));
+    }else if(maze_8 != nullptr){
+        scene->setMazeFromWall<uint8_t>(maze_8);
+        text->vec2Text<uint8_t>(*(maze_8->getWallData()));
     }else{
-        Maze<uint16_t> *temp = static_cast<Maze<uint16_t>*>(scene->getMazeClassP());
-        text->vec2Text<uint16_t>(*(temp->getWallData()));
+        //何もしない
     }
+
     /*テキストをブラウザにセット*/
     ui->mazeTextBrowser->setText(*(text->getText()));
 }
@@ -121,18 +133,25 @@ void MainWindow::on_selectFileButton_clicked()
         int size = (list.size()-1)/2;
 
         /*壁テキストデータを壁データに変換*/
-        if(15 < size){
-            Maze<uint32_t> *tmpMazeP = static_cast<Maze<uint32_t>*>(scene->getMazeClassP());
+        /*壁描画データ更新*/
+        if((15 < size) && (maze_32 != nullptr)){
             vector<vector<uint32_t>> tmpWallData = text->text2Vec<uint32_t>();
-            tmpMazeP->setWallData(tmpWallData);
-        }else if(7 < size){
-
+            maze_32->setWallData(tmpWallData);
+            scene->setWallFromMaze(maze_32);
+        }else if((7 < size) && (maze_16 != nullptr)){
+            vector<vector<uint16_t>> tmpWallData = text->text2Vec<uint16_t>();
+            maze_16->setWallData(tmpWallData);
+            scene->setWallFromMaze(maze_16);
+        }else if(maze_8 != nullptr){
+            vector<vector<uint8_t>> tmpWallData = text->text2Vec<uint8_t>();
+            maze_8->setWallData(tmpWallData);
+            scene->setWallFromMaze(maze_8);
         }else{
-
+            //何もしない
         }
 
-        /*壁描画更新*/
-
+        //壁描画の更新
+        scene->upDataWallBrush();
     }
 }
 

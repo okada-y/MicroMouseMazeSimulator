@@ -6,6 +6,7 @@
 #include "mazeDraw/wallitemvec.h"
 #include "mazeDraw/pillaritemvec.h"
 #include "mazeText/mazetext.h"
+#include "maze.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -29,10 +30,14 @@ private slots:
     void on_selectFileButton_clicked();
 
 private:
-    Ui::MainWindow *ui;
     void init();
+    Ui::MainWindow *ui;
     MazeScene *scene;
     MazeText *text;
+    Maze<uint8_t> *maze_8;
+    Maze<uint16_t> *maze_16;
+    Maze<uint32_t> *maze_32;
     void* mazetemp;
+    int mazeSize;
 };
 #endif // MAINWINDOW_H

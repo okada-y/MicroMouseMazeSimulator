@@ -23,7 +23,8 @@ public:
     bool isInsideOfField(int ax, int x, int y);
     template <class mazeSize_t>
     vector<vector<mazeSize_t>>getExistsVec();
-    void setExistsVec(vector<vector<uint32_t>>);
+    template <class mazeSize_t>
+    void setExistsVec(vector<vector<mazeSize_t>> data);
 
     std::vector<std::vector<WallItem*>> besideItemVec;     //横壁配列
     std::vector<std::vector<WallItem*>> verticalItemVec;   //縦壁配列
@@ -59,5 +60,28 @@ vector<vector<mazeSize_t>> WallItemVec::getExistsVec(){
     }
     return data;
 }
+
+template <class mazeSize_t>
+void WallItemVec::setExistsVec(vector<vector<mazeSize_t>> data){
+
+    bool exists = false;
+
+    /*横壁情報をセット*/
+    for(int y=1; y<mazeSize; y++){
+        for(int x=0; x<mazeSize; x++){
+            exists = (data.at(BESIDE).at(y-1) >> x) & 1;
+            setExists(BESIDE,x,y,exists);
+        }
+    }
+
+    /*縦壁情報のセット*/
+    for(int x=1; x<mazeSize; x++){
+        for(int y=0; y<mazeSize; y++){
+            exists = (data.at(VERTICAL).at(x-1) >> y) & 1;
+            setExists(VERTICAL,x,y,exists);
+        }
+    }
+}
+
 
 #endif // WALLITEMVEC_H

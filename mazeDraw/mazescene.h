@@ -18,22 +18,20 @@
 #include "pillaritemvec.h"
 #include "maze.h"
 
+
 class MazeScene : public QGraphicsScene
 {
 
 public:
-    explicit MazeScene(int mazeSize = MAX_MAZE_SIZE, QObject *parent = nullptr);
-    void setMazeFromWall();
-    void setWallFromMaze();
+    explicit MazeScene(int size = MAX_MAZE_SIZE, QObject *parent = nullptr);
+    template<class mazeSize_t> void setMazeFromWall(Maze<mazeSize_t>*maze);
+    template<class mazeSize_t> void setWallFromMaze(Maze<mazeSize_t>*maze);
     const int getMazeSize(){return mazeSize;}
-    void* getMazeClassP();
+    void upDataWallBrush();
 
 private:
     WallItemVec *wall;
     PillarItemVec *pillar;
-    Maze<uint8_t> *maze_8;
-    Maze<uint16_t> *maze_16;
-    Maze<uint32_t> *maze_32;
 
     int wallWidth;
     int wallLength;
@@ -48,6 +46,32 @@ protected:
 
 };
 
+template<class mazeSize_t>
+void MazeScene::setMazeFromWall(Maze<mazeSize_t> *maze){
+    /*
+     * Set the drawing wall data to the maze data.
+     *
+     * return
+     * ------
+     *
+     */
+    vector<vector<mazeSize_t>> tmp(2, vector<mazeSize_t>(mazeSize - 1));
+    tmp = wall->getExistsVec<mazeSize_t>();
+    maze->setWallData(tmp);
+}
 
+template<class mazeSize_t>
+void MazeScene::setWallFromMaze(Maze<mazeSize_t> *maze){
+    /*
+     * Set the maze data to the drawing wall data.
+     *
+     * return
+     * ------
+     * void
+     */
+    const vector<vector<mazeSize_t>> *tmp;
+    tmp = maze->getWallData();
+    wall->setExistsVec(*tmp);
+}
 
 #endif // MAZESCENE_H

@@ -12,82 +12,16 @@ MazeScene::MazeScene(int size, QObject *parent)
         qDebug("Out of range of maze size.");
         return;
     }
-
     mazeSize = size;
-    if(16 < mazeSize){
-        maze_32 = new Maze<uint32_t>(mazeSize);
-        wall = new WallItemVec(maze_32->getMazeSize());
-        pillar = new PillarItemVec(maze_32->getMazeSize());
-    }else if(8 < mazeSize){
-        maze_16 = new Maze<uint16_t>(mazeSize);
-        wall = new WallItemVec(maze_16->getMazeSize());
-        pillar = new PillarItemVec(maze_16->getMazeSize());
-    }else{
-        maze_8 = new Maze<uint8_t>(mazeSize);
-        wall = new WallItemVec(maze_8->getMazeSize());
-        pillar = new PillarItemVec(maze_8->getMazeSize());
-    }
+    wall = new WallItemVec(mazeSize);
+    pillar = new PillarItemVec(mazeSize);
 
     //壁、柱の描画
     drawWallItemVec(wall, wallWidth, wallLength);
     drawPillarlItemVec(pillar, wallWidth, wallLength);
 }
 
-void MazeScene::setMazeFromWall(){
-    /*
-     * Set the drawing wall data to the maze data.
-     *
-     * return
-     * ------
-     *
-     */
-    if(16 < mazeSize){
-        vector<vector<uint32_t>> tmp(2, vector<uint32_t>(mazeSize - 1));
-        tmp = wall->getExistsVec<uint32_t>();
-        maze_32->setWallData(tmp);
-    }else if(8 < mazeSize){
-        vector<vector<uint16_t>> tmp(2, vector<uint16_t>(mazeSize - 1));
-        tmp = wall->getExistsVec<uint16_t>();
-        maze_16->setWallData(tmp);
-    }else{
-        vector<vector<uint8_t>> tmp(2, vector<uint8_t>(mazeSize - 1));
-        tmp = wall->getExistsVec<uint8_t>();
-        maze_8->setWallData(tmp);
-    }
-}
 
-void MazeScene::setWallFromMaze(){
-    /*
-     * Set the maze data to the drawing wall data.
-     *
-     * return
-     * ------
-     *
-     */
-    if(16 < mazeSize){
-
-    }else if(8 < mazeSize){
-    }else{
-    }
-}
-
-
-void* MazeScene::getMazeClassP(){
-    /*
-     * Return the maze class according to the maze size.
-     *
-     * return
-     * ------
-     * mazeClass *
-     */
-    if(16 < mazeSize){
-        return maze_32;
-    }else if(8 < mazeSize){
-        return maze_16;
-    }else{
-        return maze_8;
-    }
-}
 
 void MazeScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
     QPointF pos = event->scenePos();
@@ -109,6 +43,27 @@ void MazeScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
             qgraphicsitem_cast<PillarItem*>(pItem)->toggleExists();
             qgraphicsitem_cast<PillarItem*>(pItem)->upDateBrush();
             break;
+    }
+}
+
+void MazeScene::upDataWallBrush(){
+
+    //横壁の描画更新
+    size_t bYSize = wall->besideItemVec.size();
+    size_t bXSize = wall->besideItemVec.at(0).size();
+    for(int y=0; y<bYSize; y++){
+        for(int x=0; x<bXSize; x++){
+            wall->besideItemVec.at(y).at(x)->upDateBrush();
+        }
+    }
+
+    //縦壁の描画更新
+    size_t vYSize = wall->verticalItemVec.size();
+    size_t vXSize = wall->verticalItemVec.at(0).size();
+    for(int y=0; y<vYSize; y++){
+        for(int x=0; x<vXSize; x++){
+            wall->verticalItemVec.at(y).at(x)->upDateBrush();
+        }
     }
 }
 
@@ -147,6 +102,7 @@ void MazeScene::drawWallItemVec(WallItemVec *wall, int width, int length){
             this->addItem(wall->verticalItemVec.at(y).at(x));
         }
     }
+
 }
 
 void MazeScene::drawPillarlItemVec(PillarItemVec *pillar, int width, int length){
