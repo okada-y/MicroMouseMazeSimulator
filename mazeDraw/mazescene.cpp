@@ -2,8 +2,7 @@
 #include <typeinfo>
 
 MazeScene::MazeScene(int size, QObject *parent)
-    : QGraphicsScene{parent},
-      wallWidth(3),wallLength(27)
+    : QGraphicsScene{parent}
 {
     this->setBackgroundBrush(QColor(255, 255, 250, 255));
 
@@ -17,11 +16,11 @@ MazeScene::MazeScene(int size, QObject *parent)
     pillar = new PillarItemVec(mazeSize);
 
     //壁、柱の描画
+    wallWidth = 3 * MAX_MAZE_SIZE / size;
+    wallLength = 27 * MAX_MAZE_SIZE / size;
     drawWallItemVec(wall, wallWidth, wallLength);
     drawPillarlItemVec(pillar, wallWidth, wallLength);
 }
-
-
 
 void MazeScene::mousePressEvent(QGraphicsSceneMouseEvent *event){
     QPointF pos = event->scenePos();
